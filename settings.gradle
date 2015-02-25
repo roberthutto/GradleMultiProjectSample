@@ -1,0 +1,6 @@
+rootProject.name = 'GradleMultiProjectSample'
+
+include 'SpringAop'
+include 'Model'
+include 'SpringMVCWebApp'
+
