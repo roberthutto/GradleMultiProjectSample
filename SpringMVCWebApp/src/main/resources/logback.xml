@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true">
+  <contextName>SpringMVCWebApp</contextName>
+  
+  
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+ 
+  <!-- To enable JMX Management -->
+  <jmxConfigurator/>
+ 
+  <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/SpringMVCWebApp.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>${catalina.base}/logs/SpringMVCWebApp.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+
+      <!-- keep 30 days' worth of history -->
+      <!-- <maxHistory>30</maxHistory> -->
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%d{dd MMM yyyy HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender> 
+  
+ 
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{dd MMM yyyy HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <!-- Exposes request response logging in Jersey. Logging filter is registered by ContextLoader -->
+  <logger name="com.catalinamarketing.cms.mediadeliveryservice.ContentDeliveryService.Request-Response" level="info"/>
+
+
+  <logger name="org.springframework" level="error" />
+ 
+  <root level="info">
+    <appender-ref ref="console" />
+    <appender-ref ref="rollingFile" />
+  </root>
+</configuration>

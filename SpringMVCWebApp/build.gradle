@@ -1,5 +1,24 @@
+apply plugin: 'war'
+
 dependencies {
 
     compile project(':Model')
+
+    /**
+     * {@link org.springframework.web.WebApplicationInitializer}
+     */
+    compile('org.springframework:spring-web:4.1.5.RELEASE')
+
+    /**
+     * Servlet Api {@link javax.servlet.ServletContext}
+     */
+    compile('javax.servlet:javax.servlet-api:3.1.0')
+
+    /**
+     * Spring MVC includes {@link org.springframework.web.servlet.DispatcherServlet}
+     */
+    compile('org.springframework:spring-webmvc:4.1.5.RELEASE')
+
+    compile('com.fasterxml.jackson.core:jackson-databind:2.5.1')
 
 }

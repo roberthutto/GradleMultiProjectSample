@@ -15,8 +15,27 @@ subprojects {
         mavenCentral()
     }
 
+
+    //Exludes dependencies from all subprojects
+    configurations.all {
+        it.exclude group: 'commons-logging'
+        it.exclude group: 'log4j', module: 'log4j'
+        it.exclude group: 'org.slf4j', module: '1.5*'
+        it.exclude group: 'org.slf4j', module: '1.6*'
+        it.exclude group: 'org.springframework', module: '2.*'
+        it.exclude group: 'org.springframework', module: '3.0.*'
+    }
+
     dependencies {
-        testCompile group: 'junit', name: 'junit', version: '4.11'
+
+        //logging
+        compile('ch.qos.logback:logback-classic:1.1.2')
+        compile('org.slf4j:jul-to-slf4j:1.7.10')
+        compile('org.slf4j:jcl-over-slf4j:1.7.10')
+        compile('org.slf4j:log4j-over-slf4j:1.7.10')
+        compile('org.slf4j:slf4j-api:1.7.10')
+        //unit test
+        testCompile('junit:junit:4.11')
     }
 }
 
