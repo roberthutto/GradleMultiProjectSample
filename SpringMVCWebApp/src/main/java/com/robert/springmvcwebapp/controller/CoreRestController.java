@@ -12,6 +12,8 @@ public class CoreRestController {
     @RequestMapping(value = "/reflect/{value}", method = RequestMethod.GET)
     public Wrapper getOffers(@PathVariable String value) {
 
+
+        //Test teamcity build
         Wrapper wrapper = new Wrapper();
         wrapper.value = value;
         return wrapper;
